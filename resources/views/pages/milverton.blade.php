@@ -108,8 +108,8 @@
 
         <div>
             <div>
-                <p>Doral, Florida</p>
-                <h2><span>204</span> Olive Road Two</h2>
+                <p>Eti-Osa, Lekki</p>
+                <h2>Milverton Estate</h2>
                 <a href="{{ route('booking')}}" class="btn btn-primary">Book Now</a>
               </div>
         </div>

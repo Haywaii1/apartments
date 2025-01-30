@@ -32,7 +32,7 @@
         <div class="container">
             <h1>Find Your Dream Home</h1>
             <p>Your ideal home is just a click away.</p>
-            <a href="#properties" class="btn btn-primary btn-lg">View Properties</a>
+            <a href="{{ route('properties') }}" class="btn btn-primary btn-lg">View Properties</a>
         </div>
     </section>
 
@@ -40,38 +40,22 @@
     <section id="properties" class="container my-5">
         <h2 class="text-center mb-4">Featured Properties</h2>
         <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card property-card">
-                    <img src="https://www.jedgammon.com/images/re/legacyTwilight2-36.jpg" class="card-img-top" alt="Property 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Modern House</h5>
-                        <p class="card-text">$500,000</p>
-                        <a href="{{ route('view.more') }}" class="btn btn-primary">View Details</a>
+            @foreach ($properties as $property)
+                <div class="col-md-4 mb-4">
+                    <div class="card property-card">
+                        <img src="{{ $property->image ?? 'https://via.placeholder.com/400x200' }}"
+                            class="card-img-top" alt="Property {{ $property->id }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $property->title ?? 'Property Title' }}</h5>
+                            <p class="card-text">${{ number_format($property->price, 2) }}</p>
+                            <a href="{{ route('apartments.show', ['id' => $property->id]) }}" class="btn btn-secondary" style="background-color: rgb(102, 102, 212)">View More</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card property-card">
-                    <img src="https://photos.zillowstatic.com/fp/21c6a3e6fb01aa15b3e22cc3badaea7f-cc_ft_576.jpg" class="card-img-top" alt="Property 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Cozy Apartment</h5>
-                        <p class="card-text">$300,000</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card property-card">
-                    <img src="https://th.bing.com/th/id/OIP.S2snMS8VAvauydgR3EsD3AHaE8?w=1200&h=800&rs=1&pid=ImgDetMain" class="card-img-top" alt="Property 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Luxury Villa</h5>
-                        <p class="card-text">$1,200,000</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
+
 
     <!-- About Us Section -->
     <section id="about" class="container my-5">

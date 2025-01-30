@@ -5,15 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class booking extends Model
+// Booking model
+class Booking extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'email',
-        'phone',
-        'message',
-        'user_id'
+        'property_id', 'name', 'email', 'start_date', 'end_date'
     ];
+
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+    ];
+
+    public function property()
+    {
+        return $this->belongsTo(Property::class);
+    }
 }
+

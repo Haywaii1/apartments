@@ -30,13 +30,6 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: EstateAgency
-  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
-  * Updated: Aug 09 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="property-single-page">
@@ -107,11 +100,11 @@
         </div>
 
         <div>
-            <div>
-                <p>Doral, Florida</p>
-                <h2><span>204</span> Olive Road Two</h2>
-                <a href="{{ route('booking')}}" class="btn btn-primary">Book Now</a>
-              </div>
+            @foreach ($properties as $property)
+            <p>ID: {{ $property->id }}</p>
+            <a href="{{ route('apartmemts', ['id' => $property->id]) }}" class="btn btn-primary">View Details</a>
+            @endforeach
+         <
         </div>
 
         <div>

@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\property;
 
 class HomeController extends Controller
 {
     public function home()
     {
-        return view('home');
+        $properties = Property::all();
+        return view('home', compact('properties'));
+
     }
-    
+
     public function homepage()
     {
-        return view('homepage');
-    }
+        $properties = Property::all();
+        return view('homepage', compact('properties'));    }
 }

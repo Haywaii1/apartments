@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('property_id')->constrained()->onDelete('cascade'); // Changed from apartment_id to property_id
             $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('message');
+            $table->string('email'); // Added email field
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('booking');
+        Schema::dropIfExists('bookings');
     }
 };
