@@ -16,15 +16,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/booking/{id}', [BookingController::class, 'booking'])->name('booking');
     Route::post('/booking-send', [BookingController::class, 'bookingSend'])->name('booking.send');
     Route::post('/contact', [ContactController::class, 'sendFeedback'])->name('feedback.send');
-});
 
-// Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/bookings', [BookingController::class, 'store']); // Create a booking
-    // Route::get('/bookings', [BookingController::class, 'index']); // Get all bookings
+    Route::post('/booking', [BookingController::class, 'store']); // Create a booking
     Route::get('/bookings/{id}', [BookingController::class, 'show']); // Get a single booking
     Route::put('/bookings/{id}', [BookingController::class, 'update']); // Update a booking
     Route::delete('/bookings/{id}', [BookingController::class, 'destroy']); // Delete a booking
-// });
+});
+
 
 
 Route::get('/properties', [PropertyController::class, 'properties'])->name('properties');

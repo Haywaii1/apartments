@@ -20,31 +20,27 @@ class BookingController extends Controller
 
     public function bookingSend(Request $request)
     {
-        // Validate incoming request data
         $validated = $request->validate([
-            'property_id' => 'required|exists:properties,id', // Ensure property ID exists
+            'property_id' => 'required|exists:properties,id',
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
         ]);
 
-        // Create a booking entry
         try {
-            $booking = Booking::create([
-                'property_id' => $validated['property_id'],
-                'name' => $validated['name'],
-                'email' => $validated['email'],
-                'start_date' => $validated['start_date'],
-                'end_date' => $validated['end_date'],
-            ]);
+            Booking::create($validated);
+            return redirect('/')->with('success', 'Booking created successfully!');
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Error saving booking', 'error' => $e->getMessage()], 500);
+            return redirect()->back()->with('error', 'Error saving booking: ' . $e->getMessage());
         }
-
-        // Return success response
-        return response()->json(['message' => 'Booking created successfully', 'booking' => $booking], 201);
     }
+
+
+
+
+
+
 
     public function show($id)
     {

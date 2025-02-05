@@ -1,3 +1,7 @@
+
+@extends('layouts.app')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +32,8 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS (Optional for interactivity) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+@endsection

@@ -24,7 +24,11 @@
     <!-- Booking Form -->
     <form method="POST" action="{{ route('booking.send') }}">
         @csrf
-        <input type="hidden" name="id" value="{{ $property->id }}">
+        @if(isset($property) && $property->id)
+        <input type="hidden" name="property_id" value="{{ $property->id }}">
+    @else
+        <p class="text-danger">Property not found.</p>
+    @endif
 
         <div class="mb-3">
             <label for="name">Name</label>

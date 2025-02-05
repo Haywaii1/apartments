@@ -33,6 +33,24 @@
     </head>
 
     <body>
+
+        <div class="container mt-3">
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+        </div>
+
+
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="container">
@@ -103,6 +121,18 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-QYPo3kVGhJTxFA0V/jDhsgNohHqOa9IoHoosRb9slRC5ci9hSfd7f4Ne8JDT5eJf" crossorigin="anonymous">
         </script>
+
+<script>
+    setTimeout(function() {
+        let alert = document.querySelector('.alert');
+        if (alert) {
+            alert.style.transition = "opacity 0.5s ease-out";
+            alert.style.opacity = "0";
+            setTimeout(() => alert.remove(), 500);
+        }
+    }, 5000); // Auto-hide after 5 seconds
+</script>
+
     </body>
 
     </html>
